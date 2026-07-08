@@ -23,6 +23,7 @@
             max-width: 1000px; /* Mở rộng khung ra một chút để cuốn sách hiển thị to rõ hơn */
             margin: 20px auto;
             background-color: transparent;
+            padding: 0 15px; /* Thêm khoảng lùi để trên điện thoại không bị sát mép màn hình */
         }
         
         /* CSS cho khung chứa sách Heyzine */
@@ -58,29 +59,39 @@
             background-color: #d63026;
         }
 
-        /* --- CSS CHO CỤM NÚT LIÊN HỆ --- */
+        /* --- CSS CHO CỤM NÚT LIÊN HỆ Ở CUỐI TRANG --- */
         .contact-wrapper {
-            position: fixed;
-            top: 20px;
-            left: 20px;
             display: flex;
-            flex-direction: column;
-            gap: 10px;
-            z-index: 1000;
+            flex-direction: row; /* Dàn 2 nút nằm ngang trên máy tính */
+            justify-content: space-between;
+            gap: 15px; /* Khoảng cách giữa 2 nút */
+            margin-top: 15px;
+            margin-bottom: 30px;
         }
-        .floating-btn {
+
+        /* Khi màn hình điện thoại quá nhỏ, 2 nút sẽ tự động xếp dọc */
+        @media (max-width: 500px) {
+            .contact-wrapper {
+                flex-direction: column;
+            }
+        }
+
+        .contact-btn {
             color: white;
-            padding: 8px 15px;
-            border-radius: 30px;
-            font-size: 13px;
+            padding: 14px 20px;
+            border-radius: 8px;
+            font-size: 16px;
             font-weight: bold;
             text-decoration: none;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            text-align: center;
+            flex: 1; /* Ép 2 nút dài bằng nhau */
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             transition: transform 0.3s, background-color 0.3s;
         }
-        .floating-btn:hover {
-            transform: scale(1.05);
+        .contact-btn:hover {
+            transform: translateY(-3px); /* Hiệu ứng nảy lên nhẹ khi khách rê chuột vào */
         }
+        
         .btn-call { background-color: #27ae60; }
         .btn-call:hover { background-color: #219653; }
         .btn-zalo { background-color: #0068ff; }
@@ -89,8 +100,6 @@
 </head>
 <body>
 
-
-
     <div class="menu-container">
         
         <div class="flipbook-wrapper">
@@ -98,11 +107,8 @@
         </div>
         
         <a href="https://jmarthcm.com/" class="promo-btn" target="_blank">Nhấn vào đây để nhận nhiều ưu đãi khác</a>
-        <div class="contact-wrapper">
-        <a href="tel:0336346346" class="floating-btn btn-call">📞 LIÊN HỆ ĐẶT BÀN 0336.346.346</a>
-        <a href="https://zalo.me/0336346346" target="_blank" class="floating-btn btn-zalo">💬 Zalo: 0336.346.346</a>
-    </div>
-    </div>
 
-</body>
-</html>
+        <div class="contact-wrapper">
+            <a href="tel:0336346346" class="contact-btn btn-call">📞 LIÊN HỆ ĐẶT BÀN 0336.346.346</a>
+            <a href="https://zalo.me/0336346346" target="_blank" class="contact-btn btn-zalo">💬 Zalo: 0336.346.346</a>
+        </div>
